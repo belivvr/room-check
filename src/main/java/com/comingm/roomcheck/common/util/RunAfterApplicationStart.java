@@ -72,7 +72,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 					
 					
 						RoomInfoCreateDto roomInfoCreateDto = new RoomInfoCreateDto();
-						String name = "동적 생성 테스트 " + (maxId+1) +" 관";
+						String name = "이벤트 " + (maxId+1) +" 관";
 					
 						roomInfoCreateDto.setName(name);
 						roomInfoCreateDto.setSceneId(hubsSceneSid);
