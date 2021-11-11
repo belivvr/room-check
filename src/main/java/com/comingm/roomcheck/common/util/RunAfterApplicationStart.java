@@ -51,7 +51,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 				ApiKey apiKey = apiKeyRepository.findByApiKey("ZZVL9FNGXpi$nrXq1&olsE*dD");
 
 				Long maxId = hubsRepositiry.findMaxId();
-				
+				System.out.println(maxId);		
 				List<Hubs> data = hubsRepositiry.findAllByApiKeyAndSceneSidAndDeleteYn(apiKey,hubsSceneSid,"N");
 		
 				int totalRoomSize = 0;
@@ -118,7 +118,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 				Thread.sleep(3000);
 				
 				
-				
+				System.out.println("222222222222222");	
 				List<Hubs> data2 = hubsRepositiry.findAllByApiKeyAndSceneSidAndDeleteYn(apiKey,hubsSceneSid,"Y");
 				
 				for(Iterator<Hubs> itr = data2.iterator(); itr.hasNext();) {
