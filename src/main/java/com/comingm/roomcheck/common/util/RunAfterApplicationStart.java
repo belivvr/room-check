@@ -46,9 +46,10 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
+		
 		while(true) {
 			try {
-				ApiKey apiKey = apiKeyRepository.findByApiKey("ZZVL9FNGXpi$nrXq1&olsE*dD");
+				ApiKey apiKey = apiKeyRepository.findByApiKey("ZZVL9FNGXpinrXq1olsEdD");
 
 				Long maxId = hubsRepositiry.findMaxId();
 				System.out.println(maxId);		
@@ -77,7 +78,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 						roomInfoCreateDto.setName(name);
 						roomInfoCreateDto.setSceneId(hubsSceneSid);
 					
-						webClientUtil.post("/hubs/create","ZZVL9FNGXpi$nrXq1&olsE*dD",roomInfoCreateDto);
+						webClientUtil.post("/hubs/create","ZZVL9FNGXpinrXq1olsEdD",roomInfoCreateDto);
 					
 					}
 					
