@@ -38,22 +38,21 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 	
 	//sceneSid,hubsPrefixName,minRoomCount
 	private Object[][] ObjArr= {
-				{"Lk5Ffoi",		"김지현"		,1},
-				{"EXM2naB",		"박상혁"		,1},
-				{"DVc8ejT",		"아트놈"		,1},
-				{"X6ENysV",		"요요진"		,1},
-				{"N5thun9",		"레이레이"		,1},
-				{"gQ4eQS8",		"그룹(찰스장,코마,구준엽,홍지윤,김규리)"		,1},
-				{"WC9A5e5",		"미디어아트"	,1},
+				{"nKPoDLc",		"김지현 & 박상혁"		,1},
+				{"aWJQJ8k",		"요요진 & 레이레이"		,1},
+				{"pL7Bk7s",		"아트놈 & 그룹방(찰스장,코마,구준엽,홍지윤,김규리)"		,1},
 				
-				{"8dYciVJ",		"디자이너(강동준,고태용,이청정,한상혁,곽현주)"	,1},
-				
+				{"WrR2wSr",		"미디어아트 & 디자이너 (강동준,고태용,이청정,한상혁,곽현주)"		,1},
+			
 				{"ZJrSuiM",		"쟈코비"		,1},
 				{"SdFb3UG",		"조준호"		,1},
 				{"fvZyYUi",		"애쉬"		,1},
 				{"ksmm5ta",		"아이러닉"		,1},
 				
-				{"nibzdbD",		"웹툰,영화"		,1},
+				{"nibzdbD",		"브랜드"		,1},
+				
+				{"Tmd6EVy",		"무면"		,1}
+				
 	}; 
 	
 	@Override
