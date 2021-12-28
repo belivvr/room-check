@@ -41,6 +41,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 				{"nKPoDLc",		"김지현 & 박상혁"		,1},
 				{"aWJQJ8k",		"요요진 & 레이레이"		,1},
 				{"pL7Bk7s",		"아트놈 & 그룹방(찰스장,코마,구준엽,홍지윤,김규리)"		,1},
+				{"iXEYSup",		"Artist Group Exhibition"		,1},
 				
 				{"WrR2wSr",		"미디어아트 & 디자이너 (강동준,고태용,이청정,한상혁,곽현주)"		,1},
 			
