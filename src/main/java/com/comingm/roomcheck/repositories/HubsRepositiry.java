@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.comingm.roomcheck.entities.ApiKey;
+import com.comingm.roomcheck.entities.HubScene;
 import com.comingm.roomcheck.entities.Hubs;
 
 

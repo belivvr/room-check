@@ -44,6 +44,7 @@ dependencies {
 	testImplementation('io.projectreactor:reactor-test')
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
 }
 
 

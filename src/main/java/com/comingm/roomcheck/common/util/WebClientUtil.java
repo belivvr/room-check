@@ -2,63 +2,56 @@ package com.comingm.roomcheck.common.util;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
-import javax.net.ssl.SSLException;
+import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
-import reactor.netty.http.client.HttpClient;
-
 @Component
 public class WebClientUtil {
 
-	@Value("${xrcloud.host}")
-	private String apiServer;
 	
-	@Value("${spring.profiles.active}")
-	private String codeLevel;
 	
-	public Object post(String uri,String xrcloudApiKey) throws ParseException {
+public String get(String apiServer,String uri, String name, String value) throws ParseException {
+		
+
+		WebClient client;	
+				
+		client = WebClient.create(apiServer);
+		
+		JSONParser jsonParser = new JSONParser();
+
+		String str =  client.get()
+						.uri(uriBuilder ->uriBuilder
+								.path(uri)
+								.queryParam(name, value)
+								.build())
+						.accept(APPLICATION_JSON)
+						.retrieve()
+						.bodyToMono(String.class)
+						.block();
+		
+		return str;
+	}
+	
+	
+	
+	
+	public Object post(String apiServer,String uri) throws ParseException {
 		
 		WebClient client;
-		
-		if(codeLevel.equals("dev")) {
-			HttpClient httpClient = HttpClient.create().secure(t -> { 
-				try { 
-					t.sslContext(SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build()); 
-				} catch (SSLException e) { 
-					e.printStackTrace();
-				} 
-			});		
-							
-			 	client = WebClient.builder()
-								.baseUrl(apiServer)
-								.clientConnector(new ReactorClientHttpConnector(httpClient)) 
-								.build();
-			}else {
-				
-				client = WebClient.create(apiServer);
-								
-			}
-				
-	
-		
+			
+		client = WebClient.create(apiServer);
 		
 		JSONParser jsonParser = new JSONParser();
 		String str =  client.post()
 						.uri(uri)
-						.accept(APPLICATION_JSON)
-						.headers(headers ->{
-							headers.add("xrcloud-api-key", xrcloudApiKey);
-						})			
+						.accept(APPLICATION_JSON)	
 						.retrieve()
 						.bodyToMono(String.class)
 						.block();
@@ -69,46 +62,35 @@ public class WebClientUtil {
 	}
 	
 		
-	public Object post(String uri, String xrcloudApiKey, Object dto) throws ParseException {
+	public Object post(String apiServer,String uri, Object dto) throws ParseException {
 		
 
-		WebClient client;
-		
-		if(codeLevel.equals("dev")) {
-			HttpClient httpClient = HttpClient.create().secure(t -> { 
-				try { 
-					t.sslContext(SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build()); 
-				} catch (SSLException e) { 
-					e.printStackTrace();
-				} 
-			});		
-							
-			 	client = WebClient.builder()
-								.baseUrl(apiServer)
-								.clientConnector(new ReactorClientHttpConnector(httpClient)) 
-								.build();
-			}else {
+		WebClient client;	
 				
-				client = WebClient.create(apiServer);
-								
-			}
-		
+		client = WebClient.create(apiServer);
 		
 		JSONParser jsonParser = new JSONParser();
 
-		Object obj =  client.post()
+		String str =  client.post()
 						.uri(uri)
 						.accept(APPLICATION_JSON)
-						.headers(headers ->{
-							headers.add("xrcloud-api-key", xrcloudApiKey);
-						})			
 						.body(BodyInserters.fromObject(dto))
 						.retrieve()
 						.bodyToMono(String.class)
 						.block();
+		if(str != null) {
+			Object obj = jsonParser.parse(str);
 		
-	
-		return obj;
+			JSONObject jsonObj = (JSONObject) obj;
+			return jsonObj;
+		}else {
+			
+			return null;
+		}
 	}
+	
+	
+	
+	
 	
 }

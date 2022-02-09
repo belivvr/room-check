@@ -14,7 +14,7 @@ public class RoomInfoCreateDto {
 	private String name;
 	
 	@ApiModelProperty(position=2,value="장면 id")
-	private String sceneId;
+	private String sceneSid;
 	
 
 	
