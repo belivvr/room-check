@@ -111,7 +111,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 				
 				//증가 프로세스
 				if(HeadCheckList.size() < hubScene.getMaxChannel()) {		
-					if((float)totalHeadCount/totalRoomSize > hubScene.getChannelIncreaseWeight()) {
+					if((float)totalHeadCount/totalRoomSize > hubScene.getChannelIncreaseWeight() || HeadCheckList.size() < hubScene.getMinChannel()) {
 									
 						RoomInfoCreateDto roomInfoCreateDto = new RoomInfoCreateDto();
 						Long maxId = hubSpaceRepository.findMaxId();
