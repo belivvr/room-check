@@ -108,10 +108,6 @@ public class HubScene extends Resource implements Serializable{
 		this.channelDecreaseWeight = channelDecreaseWeight;
 	}
 
-	public void setChannelDecreaseWeight(int channelDecreaseWeight) {
-		this.channelDecreaseWeight = channelDecreaseWeight;
-	}
-
 	public String getCategory() {
 		return category;
 	}
