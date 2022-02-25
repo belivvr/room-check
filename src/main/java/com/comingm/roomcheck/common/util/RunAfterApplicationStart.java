@@ -79,7 +79,9 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 //	}; 
 	
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args)  {
+		
+		try {
 		
 		while(true) {	
 		
@@ -191,5 +193,10 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 			}
 
 		}
+	
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
+	
 }
