@@ -88,9 +88,10 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 			List<HubScene> hubSceneList = hubSceneRepository.findAllByActive("Y");
 			
 			for(HubScene hubScene : hubSceneList) {
+				System.out.println("11");
 				List<HubSpace> hubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("Y",hubScene,"public");
 				if(hubSpaceList.size() == 0)
-					break;
+					continue;
 				String hubSidString = "";
 				for(HubSpace item : hubSpaceList) 
 					hubSidString += item.getHubSid()+",";
