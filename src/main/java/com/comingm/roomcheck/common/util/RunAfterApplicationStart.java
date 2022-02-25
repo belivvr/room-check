@@ -88,7 +88,6 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 			List<HubScene> hubSceneList = hubSceneRepository.findAllByActive("Y");
 			
 			for(HubScene hubScene : hubSceneList) {
-				System.out.println("11");
 				List<HubSpace> hubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("Y",hubScene,"public");
 				if(hubSpaceList.size() == 0)
 					continue;
@@ -168,7 +167,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 				//사람있을경우 활성화 제외된 방 열기
 				List<HubSpace> unActiveHubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("N",hubScene,"public");
 				if(unActiveHubSpaceList.size() == 0)
-					break;		
+					continue;		
 				
 				hubSidString = "";
 				for(HubSpace item : unActiveHubSpaceList) 
