@@ -162,7 +162,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 					}
 				}
 				
-				Thread.sleep(500);
+				Thread.sleep(200);
 				
 				//사람있을경우 활성화 제외된 방 열기
 				List<HubSpace> unActiveHubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("N",hubScene,"public");
