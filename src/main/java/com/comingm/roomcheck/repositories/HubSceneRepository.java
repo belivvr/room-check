@@ -22,4 +22,6 @@ public interface HubSceneRepository extends JpaRepository<HubScene,Long> {
 
 	List<HubScene> findAllByActive(String active);
 
+	List<HubScene> findAllByActiveAndRoomAutoScaling(String active, String roomAutoScaling);
+
 }

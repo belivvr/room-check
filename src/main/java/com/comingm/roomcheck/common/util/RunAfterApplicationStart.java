@@ -85,7 +85,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 		
 		while(true) {	
 		
-			List<HubScene> hubSceneList = hubSceneRepository.findAllByActive("Y");
+			List<HubScene> hubSceneList = hubSceneRepository.findAllByActiveAndRoomAutoScaling("Y","Y");
 			
 			for(HubScene hubScene : hubSceneList) {
 				List<HubSpace> hubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("Y",hubScene,"public");
@@ -162,7 +162,7 @@ public class RunAfterApplicationStart implements ApplicationRunner {
 					}
 				}
 				
-				Thread.sleep(200);
+				Thread.sleep(50);
 				
 				//사람있을경우 활성화 제외된 방 열기
 				List<HubSpace> unActiveHubSpaceList = hubSpaceRepository.findAllByActiveAndHubSceneAndPublishType("N",hubScene,"public");
